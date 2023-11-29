@@ -9,7 +9,7 @@ int main()
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
     {
         printf("Failed to load Winsock.\\n");
-        return USER_ERROR;
+        exit(-1);
     }
 
     Client client(20000, "127.0.0.1");
