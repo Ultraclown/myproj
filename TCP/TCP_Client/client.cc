@@ -4,15 +4,7 @@ using namespace std;
 
 Client::Client(int port, const char* ip_addr)
 {
-    // 创建套接字
-    socket_client_ = socket(AF_INET, SOCK_STREAM, 0);
-    if(socket_client_ == INVALID_SOCKET)
-    {
-        printf(" Failed socket() \\n");
-        exit(-1);
-    }
-
-    // 设置套接字信息
+    // 设置ip, port信息
     server_in_.sin_family = AF_INET;
     server_in_.sin_port = htons(port);
     server_in_.sin_addr.S_un.S_addr = inet_addr(ip_addr);
@@ -26,6 +18,14 @@ Client::~Client()
 int Client::run()
 {
     int ret;
+
+    // 创建套接字
+    socket_client_ = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if(socket_client_ == INVALID_SOCKET)
+    {
+        printf(" Failed socket() \\n");
+        exit(-1);
+    }
 
     // 连接服务器
     if(connect(socket_client_, (sockaddr*)&server_in_, sizeof(server_in_)) == -1)
