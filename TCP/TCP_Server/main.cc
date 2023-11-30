@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    Server server(20000, "116.62.6.98");
+    Server server(20000, "0.0.0.0");
     server.run();
     server.~Server();
 

@@ -46,7 +46,7 @@ void Server::run()
         exit(-1);
     }
 
-    int len = sizeof(struct sockaddr_in);
+    socklen_t len = sizeof(struct sockaddr_in);
     char buffer[200];
     while(true)
     {
@@ -81,7 +81,7 @@ void Server::interact(int sock_cli, sockaddr_in addr_cli)
             printf("***Somethin wrong***");
             continue;
         }
-        recvData[ret] = '\\0';
+        recvData[ret] = '\0';
 
         print_time(addr_cli.sin_addr);
         printf("读取消息： ");
@@ -94,7 +94,8 @@ void Server::interact(int sock_cli, sockaddr_in addr_cli)
 
         // 发送消息
         printf("请发送消息： ");
-        gets(sendData);
+        //gets(sendData);
+        scanf("%s", &sendData);
         print_time();
         printf("发送消息：%s", sendData);
         printf("\\n");
@@ -112,7 +113,7 @@ void print_time(){
     time_t cur_time;
     time(&cur_time);
     char *now=ctime(&cur_time);
-    now[24]='\\0';
+    now[24]='\0';
     printf("[%s]",now);
 }
  
@@ -120,6 +121,6 @@ void print_time(in_addr addr){
     time_t cur_time;
     time(&cur_time);
     char *now=ctime(&cur_time);
-    now[24]='\\0';
+    now[24]='\0';
     printf("[%s](From %s):",now,inet_ntoa(addr));
 }
