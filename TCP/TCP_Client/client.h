@@ -3,11 +3,11 @@
 #include <string.h>
 #include <string>
 #ifdef __WIN32__
-# include <winsock2.h>
+#include <winsock2.h>
 #pragma warning(disable : 4996)
 #pragma comment(lib, "ws2_32.lib")
 #else
-# include <sys/socket.h>
+#include <sys/socket.h>
 #endif
 
 class Client
@@ -17,9 +17,9 @@ class Client
         sockaddr_in server_in_;
 
     public:
-        Client(int port, const char* ip_addr);
+        Client(u_short port, const char* ip_addr);
         ~Client();
-        int run();
+        void run();
 };
 
 void print_time();

@@ -16,10 +16,14 @@ class Server
     private:
         int sock_ser_, sock_cli_;
         sockaddr_in addr_ser_, addr_cli_;
+        
+        void interact(int sock_cli, sockaddr_in addr_cli);
 
     public:
-        Server(int port, const char* ip_addr);
-        void run();
+        Server(u_short port, const char* ip_addr);
         ~Server();
+        void run();
 };
 
+void print_time();
+void print_time(in_addr addr);

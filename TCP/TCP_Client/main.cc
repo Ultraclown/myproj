@@ -12,7 +12,7 @@ int main()
         exit(-1);
     }
 
-    Client client(20000, "127.0.0.1");
+    Client client(20000, "116.62.6.98");
     client.run();
     client.~Client();
 
