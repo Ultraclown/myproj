@@ -46,8 +46,8 @@ void Client::run()
     char sendData[200];
     while(true)
     {
-        memset(recvData, '\\0', sizeof(recvData));
-        memset(sendData, '\\0', sizeof(sendData));
+        memset(recvData, '\0', sizeof(recvData));
+        memset(sendData, '\0', sizeof(sendData));
 
         // 发送消息
         printf("请发送消息： ");
@@ -63,9 +63,9 @@ void Client::run()
         }
 
         // 接收消息
-        recvData[0] = '\\0';
+        recvData[0] = '\0';
         ret = recv(socket_client_, recvData, 200, 0);
-        recvData[ret] = '\\0';
+        recvData[ret] = '\0';
 
         print_time_from(server_in_.sin_addr);
         printf("读取消息： ");
@@ -85,7 +85,7 @@ void print_time() {
     time_t cur_time;
     time(&cur_time);
     char* now = ctime(&cur_time);
-    now[24] = '\\0';
+    now[24] = '\0';
     printf("[%s]", now);
 }
 
@@ -93,7 +93,7 @@ void print_time_from(in_addr addr) {
     time_t cur_time;
     time(&cur_time);
     char* now = ctime(&cur_time);
-    now[24] = '\\0';
+    now[24] = '\0';
     printf("[%s](From %s):", now, inet_ntoa(addr));
 }
 
@@ -101,6 +101,6 @@ void print_time_to(in_addr addr) {
     time_t cur_time;
     time(&cur_time);
     char* now = ctime(&cur_time);
-    now[24] = '\\0';
+    now[24] = '\0';
     printf("[%s](To %s):", now, inet_ntoa(addr));
 }

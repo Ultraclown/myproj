@@ -5,7 +5,8 @@
 #ifdef __WIN32__
 #include <winsock2.h>
 #pragma warning(disable : 4996)
-#pragma comment(lib, "ws2_32.lib")
+//#pragma comment(lib, "ws2_32.lib")
+#pragma comment (lib,"ws2_32")
 #else
 #include <sys/socket.h>
 #endif
